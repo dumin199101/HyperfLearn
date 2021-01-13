@@ -11,18 +11,22 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\RequestMapping;
 
 /**
- * Class IndexController
+ * Class UserController
  * @package App\Controller
- * @AutoController(prefix="main")
+ * @Controller()
  */
-class IndexController extends AbstractController
+class UserController extends AbstractController
 {
+    /**
+     * @RequestMapping(path="index2",methods={"get","post"})
+     */
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
+        $user = $this->request->input('user', 'wangli');
         $method = $this->request->getMethod();
 
         return [
@@ -31,8 +35,4 @@ class IndexController extends AbstractController
         ];
     }
 
-    public function hello()
-    {
-        return "Hello,hyperf";
-    }
 }
