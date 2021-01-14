@@ -12,7 +12,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\GetMapping;
 use Hyperf\HttpServer\Annotation\RequestMapping;
+use Hyperf\HttpServer\Contract\RequestInterface;
 
 /**
  * Class UserController
@@ -24,15 +26,24 @@ class UserController extends AbstractController
     /**
      * @RequestMapping(path="index2",methods={"get","post"})
      */
-    public function index()
+    public function index(RequestInterface $request)
     {
-        $user = $this->request->input('user', 'wangli');
-        $method = $this->request->getMethod();
+        $user = $request->input('user', 'wangli');
+        $method = $request->getMethod();
 
         return [
             'method' => $method,
             'message' => "Hello {$user}.",
         ];
+    }
+
+    /**
+     * 处理HTTP请求,获取请求参数
+     * @GetMapping(path="/hi")
+     */
+    public function hi(RequestInterface $request)
+    {
+        return $request->input("id",1);
     }
 
 }
