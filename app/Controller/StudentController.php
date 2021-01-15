@@ -12,7 +12,7 @@ use Hyperf\HttpServer\Annotation\AutoController;
  * @package App\Controller
  * @AutoController()
  */
-class Student extends AbstractController
+class StudentController extends AbstractController
 {
     /**
      * @var StudentServiceImpl
