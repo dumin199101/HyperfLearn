@@ -10,5 +10,6 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    \App\Service\StudentServiceImpl::class => \App\Service\StudentService::class
+    \App\Service\StudentService::class => \App\Service\StudentServiceImpl::class,
+    \App\Service\Worker::class => \App\Service\WorkerImpl::class
 ];
